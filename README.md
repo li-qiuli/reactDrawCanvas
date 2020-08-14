@@ -28,3 +28,11 @@ class Example extends Component {
 ## License
 
 MIT © [li-qiuli](https://github.com/li-qiuli)
+
+## publish to npm 
+
+npm publish
+
+## Deploying to Github Pages
+
+npm run deploy
