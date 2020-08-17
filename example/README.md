@@ -3,3 +3,5 @@ This example was bootstrapped with [Create React App](https://github.com/faceboo
 It is linked to the react_clip package in the parent directory for development purposes.
 
 You can run `npm install` and then `npm start` to test your package.
+
+canvas2img(page)

@@ -1,7 +1,6 @@
 // 本地下载图片
 const downloadImage = (res: any) => {
     let url = res.preview
-    debugger
     var a = document.createElement('a')
     a.href = url
     a.download = ''
