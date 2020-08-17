@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-konva';
-import useImage from 'use-image';
-// import { ImageParam} from './type'
+import { signEleLoaded } from '../App';
 
 function DrawUrlImage(props:any) {
-  const [image, status] = useImage(props.message.src, 'Anonymous');
-  const [x, setx] = useState(0);
-  const [y, sety] = useState(0);
-  const [$width, setwidth] = useState(50);
-  const [$height, setheight] = useState(50);
+  const {x,y,width,height,image}=props.message
+  const [posx] = useState(x?x:0);
+  const [posy] = useState(y?y:0);
+  const [$width] = useState(width||50);
+  const [$height] = useState(height||50);
 
   useEffect(() => {
-    const {x,y,width,height}=props.message
-    
-    setx(y?y:0)
-    sety(x?x:0)
-    setwidth(width||$width)
-    setheight(height||$height)
-    return () => {};
-  }, [$height, $width, props, props.src, props.x, props.y, status])
+    const {index,length}=props
+    if(index===length){
+      signEleLoaded.loaded$.next('imageLoaded')
+    }
+    return ()=>{}
+  }, [props])
   return (
-    <Image image={image} x={x} y={y}  width={$width} height={$height}/>
+    <Image image={image} x={posx} y={posy}  width={$width} height={$height}/>
   );
 }
 export default DrawUrlImage
